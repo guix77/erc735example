@@ -114,13 +114,6 @@ contract('Identity', async (accounts) => {
     assert.equal(result[5], '');
   });
 
-  it('Test getBytes', async() => {
-    const sigRow = web3.utils.keccak256(identity.address, topics.givenName.topic, topics.givenName.data).substr(2);
-    const sig = '0x' + sigRow;
-    const result = await identity.getBytes(sig, 0, 32);
-    assert.equal(result, web3.utils.keccak256(identity.address, topics.givenName.topic, topics.givenName.data));
-  });
-
   // Note: to fully test ClaimHolder, we also add signatures.
   // However in the UI we won't add signatures for self-claims,
   // because signing self-claims makes no sense.
