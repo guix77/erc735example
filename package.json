@@ -1,0 +1,11 @@
+{
+  "name": "erc735",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Guillaume Duveau <guillaume.duveau@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "truffle-assertions": "^0.7.2",
+    "web3": "^1.0.0-beta.37"
+  }
+}
