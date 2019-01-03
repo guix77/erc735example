@@ -83,7 +83,8 @@ contract ClaimHolder is KeyHolder, ERC735 {
         return claims.byTopic[_topic];
     }
 
-    function getBytes(bytes _str, uint256 _offset, uint256 _length)
+    // Uncomment to use in tests.
+    /* function getBytes(bytes _str, uint256 _offset, uint256 _length)
         public
         pure
         returns (bytes)
@@ -95,5 +96,5 @@ contract ClaimHolder is KeyHolder, ERC735 {
             j++;
         }
         return sig;
-    }
+    } */
 }

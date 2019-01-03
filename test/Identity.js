@@ -71,7 +71,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user1);
     assert.equal(result[3], '0x');
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.givenName);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.givenName);
     assert.equal(result[5], 'https://user1.com/about');
   });
 
@@ -124,7 +124,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user1);
     assert.equal(result[3], '0x');
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.givenName);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.givenName);
     assert.equal(result[5], '');
   });
 
@@ -175,7 +175,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user1);
     assert.equal(result[3], '0x');
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.givenName);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.givenName);
     assert.equal(result[5], '');
 
     result = await identity.getClaim(web3.utils.soliditySha3(user1, erc735js.asciiToTopic('familyName')), {from: someone});
@@ -183,7 +183,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user1);
     assert.equal(result[3], '0x');
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.familyName);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.familyName);
     assert.equal(result[5], '');
 
     result = await identity.getClaim(web3.utils.soliditySha3(user1, erc735js.asciiToTopic('jobTitle')), {from: someone});
@@ -191,7 +191,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user1);
     assert.equal(result[3], '0x');
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.jobTitle);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.jobTitle);
     assert.equal(result[5], '');
 
     result = await identity.getClaim(web3.utils.soliditySha3(user1, erc735js.asciiToTopic('url')), {from: someone});
@@ -199,7 +199,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user1);
     assert.equal(result[3], '0x');
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.url);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.url);
     assert.equal(result[5], '');
 
     result = await identity.getClaim(web3.utils.soliditySha3(user1, erc735js.asciiToTopic('email')), {from: someone});
@@ -207,7 +207,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user1);
     assert.equal(result[3], '0x');
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.email);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.email);
     assert.equal(result[5], '');
 
     result = await identity.getClaim(web3.utils.soliditySha3(user1, erc735js.asciiToTopic('description')), {from: someone});
@@ -215,7 +215,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user1);
     assert.equal(result[3], '0x');
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.description);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.description);
     assert.equal(result[5], '');
   });
 
@@ -273,7 +273,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user2);
     assert.equal(result[3], web3.utils.keccak256(identity.address, erc735js.asciiToTopic('givenName'), profile.givenName));
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.givenName);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.givenName);
     assert.equal(result[5], '');
 
     result = await identity.getClaim(web3.utils.soliditySha3(user2, erc735js.asciiToTopic('familyName')), {from: someone});
@@ -281,7 +281,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user2);
     assert.equal(result[3], web3.utils.keccak256(identity.address, erc735js.asciiToTopic('familyName'), profile.familyName));
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.familyName);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.familyName);
     assert.equal(result[5], '');
 
     result = await identity.getClaim(web3.utils.soliditySha3(user2, erc735js.asciiToTopic('jobTitle')), {from: someone});
@@ -289,7 +289,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user2);
     assert.equal(result[3], web3.utils.keccak256(identity.address, erc735js.asciiToTopic('jobTitle'), profile.jobTitle));
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.jobTitle);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.jobTitle);
     assert.equal(result[5], '');
 
     result = await identity.getClaim(web3.utils.soliditySha3(user2, erc735js.asciiToTopic('url')), {from: someone});
@@ -297,7 +297,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user2);
     assert.equal(result[3], web3.utils.keccak256(identity.address, erc735js.asciiToTopic('url'), profile.url));
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.url);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.url);
     assert.equal(result[5], '');
 
     result = await identity.getClaim(web3.utils.soliditySha3(user2, erc735js.asciiToTopic('email')), {from: someone});
@@ -305,7 +305,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user2);
     assert.equal(result[3], web3.utils.keccak256(identity.address, erc735js.asciiToTopic('email'), profile.email));
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.email);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.email);
     assert.equal(result[5], '');
 
     result = await identity.getClaim(web3.utils.soliditySha3(user2, erc735js.asciiToTopic('description')), {from: someone});
@@ -313,7 +313,7 @@ contract('Identity', async (accounts) => {
     assert.equal(result[1].toNumber(), 1);
     assert.equal(result[2], user2);
     assert.equal(result[3], web3.utils.keccak256(identity.address, erc735js.asciiToTopic('description'), profile.description));
-    assert.equal(web3.utils.hexToAscii(result[4]), profile.description);
+    assert.equal(web3.utils.hexToUtf8(result[4]), profile.description);
     assert.equal(result[5], '');
   });
 
